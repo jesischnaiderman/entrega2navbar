@@ -1,3 +1,9 @@
 .producto_id {
-    border: blue;
-    border-style: solid;}
+    border: #e6d1d3;
+    border-style: solid;
+    margin: 10px;
+    }
+.ItemList {
+    display: flex;
+    flex-wrap: wrap;
+    }

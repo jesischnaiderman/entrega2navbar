@@ -8,6 +8,7 @@ const ItemDetail = ({producto}) => {
             <p className='item_nombre'>Producto: {producto.titulo}</p>
             <p className='item_descripcion'>Descripcion:{producto.descripcion}</p>
             <p className='item_precio'>Precio: {producto.precio}</p>
+            <p className='item_stock'>Stock: {producto.stock}</p>
 
         </div>
         </>

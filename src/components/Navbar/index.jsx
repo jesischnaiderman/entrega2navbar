@@ -3,27 +3,29 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CardWidget from '../CartWidget';
+import { Link } from "react-router-dom";
 
 import './index.css';
 const NavbarComponent = () =>{
     return (
     <>
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-        <Navbar.Brand href="#home">Gyrokinesis</Navbar.Brand>
+        <Navbar.Brand href="/">Gyrokinesis</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-        <Nav.Link href="#home">Inicio</Nav.Link>
-
-        <Nav.Link href="#home"><CardWidget /></Nav.Link>
-            <NavDropdown title="Productos..." id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#categoria1">categoria1</NavDropdown.Item>
+        <Link to={'/'}>Inicio</Link>
+        <NavDropdown title="Catalogo" id="collasible-nav-dropdown">
+                
+                <Link id='RouterNavLink'to={'/category/all'}>todos</Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#categoria2">categoria2</NavDropdown.Item>
+                <Link id='RouterNavLink' to={'/category/1'}>categoria1</Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#categoria3">categoria3</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#contactos">Contactos</Nav.Link>
+                <Link id='RouterNavLink' to={'/category/2'}>categoria2</Link>
+                </NavDropdown>
+        <Link to={'/category/all'}>Productos</Link>
+        <Link to={'/carrito'}><CardWidget /></Link>
+        <Link to={'/contactos'}>Contactos</Link>
         </Nav>
     </Navbar.Collapse>
     </Navbar>
