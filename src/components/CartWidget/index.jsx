@@ -4,7 +4,7 @@ const CardWidget = () => {
     return(
         <div className="carrito">
         <Cart/>
-        <a  href="#" >Carrito</a>
+        <p>Carrito</p>
         </div>
     );
 

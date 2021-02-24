@@ -10,7 +10,7 @@ const Item = ({producto}) => {
             <p className='item_nombre'>Producto: {producto.titulo}</p>
             <img src={producto.foto} alt={producto.fotoAlt}/>
             <p className='item_precio'>Precio: {producto.precio}</p>
-            <Link to={'/category/producto/'+producto.id}>ver +</Link>
+            <Link to={'/producto/'+producto.id}>ver +</Link>
 
         </div>
         </>

@@ -10,12 +10,12 @@ const ItemDetailContainer = () => {
        
 
         let productoSelected = Producto.filter((element)=>{
-               return element.id==idProducto
+               return element.id===idProducto
         });
 
     setProducto(productoSelected[0]);
 
-    },[]);
+    },[idProducto]);
 
     return(
     <>

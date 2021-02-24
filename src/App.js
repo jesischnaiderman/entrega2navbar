@@ -5,7 +5,7 @@ import ItemListContainer from './container/ItemListContainer.jsx';
 import ItemDetailContainer from './container/ItemDetailContainer';
 import Carrito from './container/Carrito';
 import Contactos from './container/Contactos';
-
+import CartContext from './context/CartContexto';
 
 import {
   BrowserRouter as Router,
@@ -16,7 +16,7 @@ import {
 function App() {
   return (
     <Router>
-
+      <CartContext>
       <NavbarComponent/>
       <Switch>
           <Route exact path="/">
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/category/:idCategoria">
           <ItemListContainer greeting={'Bienvenidos'}/>
           </Route>
-          <Route exact path="/category/producto/:idProducto">
+          <Route exact path="/producto/:idProducto">
           <ItemDetailContainer/>
           </Route>
           <Route path="/contactos">
@@ -36,7 +36,7 @@ function App() {
           <Carrito/>
           </Route>
         </Switch>
-      
+    </CartContext>
     </Router>
   );
 }
