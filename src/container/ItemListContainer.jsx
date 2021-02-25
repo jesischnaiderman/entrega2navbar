@@ -21,7 +21,7 @@ function ItemListContainer({ greeting }) {
 
         }
         setProductos(listaProductosCategory);
-    }, [productos, idCategoria]);
+    }, [idCategoria]);
 
     return (
         <>
