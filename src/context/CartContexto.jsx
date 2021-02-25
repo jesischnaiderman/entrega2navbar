@@ -3,22 +3,23 @@ export const cartContex = createContext();
 function CartContext({children}) {
     const [product, setProduct] = useState([]);
 
-    const addCart = (producto,contador) => {
+    const addCart = (producto) => {
+
+        console.log(producto);
         if (isInCart(producto.producto.id)){
             
             alert("ya esta en el carrito")
         }else{
-            setProduct([...product, producto,contador])
+            setProduct([...product, producto])
             console.log(product);
 
 
         }
     }
     const isInCart = (id) => {
-        console.log(product);
-        console.log(product.length==0);
 
         const search = obj => obj.id === id;
+
         if(product.length!==0){
         console.log(product.findIndex(search))
         return product.findIndex(search);
