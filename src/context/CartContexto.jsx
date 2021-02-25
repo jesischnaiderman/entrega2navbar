@@ -2,7 +2,6 @@ import React, { useState, createContext ,useContext} from "react";
 export const cartContex = createContext();
 function CartContext({children}) {
     const [product, setProduct] = useState([{'producto':[]}]);
-    const [cantidad, setcantidad] = useState([{'cantidad':0}]);
 
     const addCart = (producto,contador) => {
 
