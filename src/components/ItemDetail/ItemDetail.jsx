@@ -4,15 +4,27 @@ import ItemCount from '../ItemCount';
 import  {cartContex}  from "../../context/CartContexto";
 
 const ItemDetail = ({producto}) => {
-const [ product,addCart]= useContext(cartContex);
+const [ product,addCart, clearCart, clearItem]= useContext(cartContex);
 
     const [irCart, setIrCart] = useState(false);
     const onAdd = (contador) => {
-      setIrCart(true);
+      setIrCart(false);
 
-      addCart({producto});
-
+      addCart({producto,contador});
     };
+    const eliminar = () => {
+      
+  
+        clearCart();
+        setIrCart(false);
+      };
+
+    const eliminarItem = () => {
+      
+  
+        clearItem(producto.id);
+        setIrCart(false);
+      };
     return(
         <>
         <div  className='producto_id' >
@@ -24,7 +36,9 @@ const [ product,addCart]= useContext(cartContex);
             </div>
         <div>
             {irCart ? <button ><Link to={'/carrito'}>Terminar compra</Link></button>  : <ItemCount stock={producto.stock} onAdd={onAdd} />}
-        
+            <button onClick={()=>{eliminar()}}>Eliminar compra</button>
+            <button onClick={()=>{eliminarItem()}}>Eliminar item del carrito</button>
+
         </div>
         </>
     );

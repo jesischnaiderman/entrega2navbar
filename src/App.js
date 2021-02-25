@@ -20,7 +20,6 @@ function App() {
       <NavbarComponent/>
       <Switch>
           <Route exact path="/">
-          <ItemListContainer greeting={'Bienvenidos'}/>
           </Route>
           <Route exact path="/category/:idCategoria">
           <ItemListContainer greeting={'Bienvenidos'}/>
