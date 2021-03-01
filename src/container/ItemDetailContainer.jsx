@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Producto from "../array/lista_productos.jsx";
 import ItemDetail from '../components/ItemDetail/ItemDetail.jsx';
+import Cart from '../components/Cart/Cart.jsx'
 import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {    
@@ -20,6 +21,8 @@ const ItemDetailContainer = () => {
     return(
     <>
         <ItemDetail key={producto.id}  producto={producto}/>
+        <Cart></Cart>
+
     </>
     );
 

@@ -5,7 +5,7 @@ import ItemListContainer from './container/ItemListContainer.jsx';
 import ItemDetailContainer from './container/ItemDetailContainer';
 import Carrito from './container/Carrito';
 import Contactos from './container/Contactos';
-import CartContext from './context/CartContexto';
+import {CartProvider} from './context/CartContexto';
 
 import {
   BrowserRouter as Router,
@@ -16,10 +16,11 @@ import {
 function App() {
   return (
     <Router>
-      <CartContext>
+      <CartProvider>
       <NavbarComponent/>
       <Switch>
           <Route exact path="/">
+          <ItemListContainer greeting={'Bienvenidos'}/>
           </Route>
           <Route exact path="/category/:idCategoria">
           <ItemListContainer greeting={'Bienvenidos'}/>
@@ -35,7 +36,7 @@ function App() {
           <Carrito/>
           </Route>
         </Switch>
-    </CartContext>
+    </CartProvider>
     </Router>
   );
 }

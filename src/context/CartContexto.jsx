@@ -1,55 +1,38 @@
-import React, { useState, createContext ,useContext} from "react";
-export const cartContex = createContext();
-function CartContext({children}) {
-    const [product, setProduct] = useState([]);
+import React from "react";
+export const CartContext = React.createContext();
+export const useCartContext = () => React.useContext(CartContext);
 
-    const addCart = (producto) => {
+export const CartProvider = props => {
+  const [list, setList] = React.useState([]);
 
-        console.log(producto);
-        if (isInCart(producto.producto.id)){
-            
-            alert("ya esta en el carrito")
-        }else{
-            setProduct([...product, producto])
-            console.log(product);
+  const productsAdd = itemCount => {
 
+    console.log(itemCount)
 
+    if (list.find(item => item.producto.id === itemCount.producto.id)) {
+        console.log(list)
+
+      const newCartItem = list.map(item => {
+
+        if (item.producto.id === itemCount.producto.id) {
+          return { ...item, contador: itemCount.contador + item.contador };
         }
-    }
-    const isInCart = (id) => {
+        return item;
+      });
+      console.log(newCartItem)
 
-        const search = obj => obj.id === id;
-
-        if(product.length!==0){
-        console.log(product.findIndex(search))
-        return product.findIndex(search);
-        }
+      setList(newCartItem);
+    } else {
+      setList(state => {
+        return [...state, itemCount];
+      });
     }
-    function clearCart() {
-        if(product.length!==0){
-        setProduct('')
-        alert("ya esta eliminado  el carrito")}else{ alert("vacio  el carrito")}
-        console.log(product);
+    console.log(list)
+  };
 
-    }
-    const clearItem = (id) => {
-            
-        console.log('Eliminar item')
-        
-    }
-    return (
-        <>
-                <cartContex.Provider value={[
-                    product,
-                    addCart,
-                    clearCart,
-                    clearItem
-                ]}>
-                    {children}
-                </cartContex.Provider>
-            </>
-        )
-        
-}
-
-export default CartContext
+  return (
+    <CartContext.Provider value={{ list, productsAdd }}>
+      {props.children}
+    </CartContext.Provider>
+  );
+};

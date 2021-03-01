@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import ItemCount from '../ItemCount';
-import  {cartContex}  from "../../context/CartContexto";
+import  {useCartContext}  from "../../context/CartContexto.jsx";
 
 const ItemDetail = ({producto}) => {
-const [ product,addCart, clearCart, clearItem]= useContext(cartContex);
+const {productsAdd, clearCart, clearItem}= useCartContext();
 
     const [irCart, setIrCart] = useState(false);
+    
     const onAdd = (contador) => {
       setIrCart(false);
-
-      addCart({producto,contador});
+console.log(contador)
+      productsAdd({producto,contador});
     };
     const eliminar = () => {
       
