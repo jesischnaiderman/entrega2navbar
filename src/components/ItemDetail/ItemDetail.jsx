@@ -4,28 +4,15 @@ import ItemCount from '../ItemCount';
 import  {useCartContext}  from "../../context/CartContexto.jsx";
 
 const ItemDetail = ({producto}) => {
-const {productsAdd, clearCart, clearItem}= useCartContext();
+const {productsAdd, productDelete, listDelete}= useCartContext();
 
     const [irCart, setIrCart] = useState(false);
     
-    const onAdd = (contador) => {
+    const onAdd = (count) => {
       setIrCart(false);
-console.log(contador)
-      productsAdd({producto,contador});
+console.log(count)
+      productsAdd({ id: producto.id, name: producto.titulo, count });
     };
-    const eliminar = () => {
-      
-  
-        clearCart();
-        setIrCart(false);
-      };
-
-    const eliminarItem = () => {
-      
-  
-        clearItem(producto.id);
-        setIrCart(false);
-      };
     return(
         <>
         <div  className='producto_id' >
@@ -37,8 +24,6 @@ console.log(contador)
             </div>
         <div>
             {irCart ? <button ><Link to={'/carrito'}>Terminar compra</Link></button>  : <ItemCount stock={producto.stock} onAdd={onAdd} />}
-            <button onClick={()=>{eliminar()}}>Eliminar compra</button>
-            <button onClick={()=>{eliminarItem()}}>Eliminar item del carrito</button>
 
         </div>
         </>

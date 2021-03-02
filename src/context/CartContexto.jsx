@@ -4,24 +4,43 @@ export const useCartContext = () => React.useContext(CartContext);
 
 export const CartProvider = props => {
   const [list, setList] = React.useState([]);
+  const [cantidadItems, setCantidad] = React.useState([1]);
 
+  const productDelete = idProducto =>{
+
+    if (list.find(item => item.producto.id === idProducto)) {
+
+  
+      }
+    }
+  const listDelete = ( ) =>{
+    setList([]);
+
+}
+
+const productoCant = ( ) =>{
+    list.maplist.map(item => {
+
+        setCantidad( item.contador++);
+})
+console.log()
+}
   const productsAdd = itemCount => {
 
-    console.log(itemCount)
-
-    if (list.find(item => item.producto.id === itemCount.producto.id)) {
-        console.log(list)
+    if (list.find(item => item.id === itemCount.id)) {
 
       const newCartItem = list.map(item => {
+        setCantidad( item.contador++);
 
-        if (item.producto.id === itemCount.producto.id) {
-          return { ...item, contador: itemCount.contador + item.contador };
+        if (item.id === itemCount.id) {
+          return { ...item, count: itemCount.count + item.count };
         }
-        return item;
+        return  item;
+
       });
-      console.log(newCartItem)
 
       setList(newCartItem);
+
     } else {
       setList(state => {
         return [...state, itemCount];
@@ -31,7 +50,7 @@ export const CartProvider = props => {
   };
 
   return (
-    <CartContext.Provider value={{ list, productsAdd }}>
+    <CartContext.Provider value={{ list, productsAdd, productDelete, listDelete, cantidadItems }}>
       {props.children}
     </CartContext.Provider>
   );
