@@ -33,13 +33,14 @@ const eliminar = () => {
     return(
         
         <>
-                    <p>soy un carrito</p>
+                    <p>soy un carrito<br></br> 
+                    cantidad total items: {cantidadItems} <br></br> </p>
 
         {
             list.map((item, key) => ( 
-            <div key={key}>cantidad items: {cantidadItems} <br></br>
-              {item.contador} Producto:{item.producto.titulo} 
-              <button onClick={()=>{eliminarItem(item.producto.id)}}>Eliminar item del carrito</button>
+            <div key={key}>
+              {item.count} Producto: {item.name} 
+              <button onClick={()=>{eliminarItem(item.id)}}>Eliminar item del carrito</button>
             </div>
             ))}
             <div>            
